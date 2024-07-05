@@ -6,6 +6,14 @@ compute_sum <- function(folder, input1, input2, output) {
   # folder: name of the folder where the inputs and outputs reside
   # input1, input2: names of the input files
   # output: name of the output file
+
+  Rank_info <- FaaSr::faasr_rank()
+  Rank <- Rank_info$Rank
+  MaxRank <- Rank_info$MaxRank
+
+  if (length(Rank_info) != 0){
+    output <- paste0(Rank, "_", output)
+  }
   
   # The bucket is configured in the JSON payload as My_S3_Bucket
   # In this demo code, all inputs/outputs are in the same S3 folder, which is also configured by the user
