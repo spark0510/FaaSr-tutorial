@@ -29,7 +29,7 @@ compute_sum <- function(folder, input1, input2, output) {
   
   # Now, upload the output file to the S3 bucket
   #
-  faasr_put_file(local_file="output.csv", remote_folder=folder, remote_file=paste0(Rank, "_", output))
+  faasr_put_file(local_file="output.csv", remote_folder=folder, remote_file=paste0(Rank, output))
 
   # Print a log message
   # 
