@@ -22,6 +22,11 @@ compute_sum <- function(folder, input1, input2, output) {
   frame_output <- frame_input1 + frame_input2
   write.table(frame_output, file="output.csv", sep=",", row.names=F, col.names=T)
 
+  rank_info <- faasr_rank()
+  MaxRank <- rank_info$MaxRank 
+  Rank <- rank_info$Rank
+
+  output <- paste0(Rank, "_", output)
   # Now, upload the output file to the S3 bucket
   #
   faasr_put_file(local_file="output.csv", remote_folder=folder, remote_file=output)
